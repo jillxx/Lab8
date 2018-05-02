@@ -20,43 +20,51 @@ public class LabNumber8 {
 
 		System.out.print("welcome to our Java Class. ");
 		while (cont.equalsIgnoreCase("yes")) {
-            
+
 			// prompt user for a number and validate the input number
-			int stuNum = Validator.getInt(scnr,
+			int stuNum = Validator2.getInt(scnr,
 					"Which student would you like to learn more about? (enter a number 1-12): ", 0, 12);
-			
+
 			// prompt user to enter more
 			System.out.print("Student " + (stuNum + 1) + " is " + studentName[stuNum]
 					+ ". What would you like to know about " + studentName[stuNum] + "?");
-			boolean flag = true;
-			while (flag) {
+		//	boolean flag = true;
+			//while (flag) {
 				// pull the getString method to validate the information
-				String choice = Validator.getString(scnr, (" (enter or \"hometown\" or \"favorite food\"):"));
+				String choice = Validator2.getString(scnr, (" (enter or \"hometown\" or \"favorite food\"):"));
 
 				try {
 					// if entered is "hometown"
 					if (choice.equalsIgnoreCase("hometown")) {
-						System.out.println(studentName[stuNum] + " is from " + homeTown[stuNum]
-								+ ". would you like to know more? (enter \"yes\" or \"no\"):");
-						cont = scnr.next();
-						flag = false;
+
+						String test = Validator2.getString(scnr, studentName[stuNum] + " is from " + homeTown[stuNum]
+								+ ". would you like to know more? (enter \"yes\" or \"no\")");
+
+						if (!test.equalsIgnoreCase("yes")) {
+							break;
+						}
 
 						// if entered is "favorite food"
 					} else if (choice.equalsIgnoreCase("favorite")) {
-						System.out.println(studentName[stuNum] + "'s favorite food is " + favFood[stuNum]
-								+ ". would you like to know more?( enter\"yes\" or \"no\"):");
-						cont = scnr.next();
-						flag = false;
-					} else {//enter other input
+
+						String food = Validator2.getString(scnr, studentName[stuNum] + "'s favorite food is "
+								+ favFood[stuNum] + ". would you like to know more?( enter\"yes\" or \"no\"):");
+						if (!food.equalsIgnoreCase("yes")) {
+							break;
+						}
+
+						//flag = false;
+					} else {// enter other input
+						System.out.println("Something hit this");
+
 						throw new IllegalArgumentException("That data does not exist. Please try again");
 					}
 				} catch (IllegalArgumentException excpt) {
 					System.out.print(excpt.getMessage());
-		
 					continue;
 				}
-			}
-	
+			//}
+
 		}
 		System.out.println("Thanks!");
 
