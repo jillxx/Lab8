@@ -47,11 +47,12 @@ public class LabNumber8 {
 								+ ". would you like to know more?( enter\"yes\" or \"no\"):");
 						cont = scnr.next();
 						flag = false;
-					} else {
+					} else {//enter other input
 						throw new IllegalArgumentException("That data does not exist. Please try again");
 					}
 				} catch (IllegalArgumentException excpt) {
 					System.out.print(excpt.getMessage());
+		
 					continue;
 				}
 			}
